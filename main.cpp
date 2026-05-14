@@ -13,7 +13,7 @@ int gen_hash_index(string x);
 int sum_ascii(string);
 
 //hash table size
-const int HASH_SIZE = 1000;
+const int HASH_SIZE = 1997;
 //number of entries to display
 const int ENTRIES = 100;
 //column widths
@@ -22,8 +22,8 @@ const int W1 = 5, W2 = 12;
 int main() {
     //read the file
     ifstream fin("data.txt"); //open file
-    //initialize count, total, and index to zero
-    int count = 0, total = 0, index = 0;
+    //initialize count, total, index, and counter to zero
+    int count = 0, total = 0, index = 0, counter = 0;
     string code; //string to read from file
     
     //hash table map comprised of int (key) and list (values)
@@ -31,11 +31,11 @@ int main() {
     
     //read codes from file
     while (getline(fin, code)) {
-        count++;
         total += sum_ascii(code);
-        index += gen_hash_index(code);
+        index = gen_hash_index(code);
         //push codes into hash table
         hash_table[index].push_back(code);
+        count++;
     }
     
     fin.close(); //close file
@@ -47,11 +47,12 @@ int main() {
     //access the map using iterators
     cout << "First 100 entries:" << endl;
     for (auto it = hash_table.begin(); it != hash_table.end() 
-    && count < ENTRIES; it++) {
-    cout << setw(W1) << it->first << ": ";
+    && counter < ENTRIES; it++) {
+        cout << setw(W1) << it->first << ": ";
         if (!it->second.empty()) {
             cout << setw(W2) << it->second.front() << endl;
         }
+        counter++;
     }
 
     return 0;
