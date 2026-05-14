@@ -3,9 +3,12 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <map>
+#include <list>
 using namespace std;
 
-//function prototype
+//function prototypes
+int gen_hash_index(string x);
 int sum_ascii(string);
 
 int main() {
@@ -26,24 +29,22 @@ int main() {
     //output total
     cout << "Total: " << total << endl;
     
+    //hash table map comprised of int (key) and list (values)
+    std::map<int, list<string>> hash_table;
+    
+    //display first 100 entries
+    
     //testing function
     string x = "ABC";
     cout << "Sum x: " << sum_ascii(x) << endl;
     string y = "abc";
     cout << "Sum y: " << sum_ascii(y) << endl;
-    
-    char a = 'A';
-    cout << a << endl;
-    cout << (int) a << endl;
-    int b = 66;
-    cout << b << endl;
-    cout << (char) b << endl;
 
     return 0;
 }
 
-//function
-int sum_ascii(string x) {
+//function to generate hash index
+int gen_hash_index(string x) {
     //initialize sum to zero
     int sum = 0;
     //loop to read each character
@@ -54,10 +55,14 @@ int sum_ascii(string x) {
     return sum;
 };
 
-/* 
-These targets are present in the dataset and can be used for testing:
-536B9DFC93AF
-1DA9D64D02A0
-666D109AA22E
-E1D2665B21EA
-*/
+//function to get sum of ascii values
+int sum_ascii(string x) {
+    //initialize sum to zero
+    int sum = 0;
+    //loop to read each character
+    for (char c : x) {
+        //sum characters, int cast gets ASCII values
+        sum += (int) c;
+    }
+    return sum;
+};
