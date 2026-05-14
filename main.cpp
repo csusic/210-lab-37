@@ -1,6 +1,7 @@
 // COMSC-210 | Lab 37 | Christine Susic
 
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <string>
 #include <map>
@@ -11,8 +12,12 @@ using namespace std;
 int gen_hash_index(string x);
 int sum_ascii(string);
 
+//hash table size
+const int HASH_SIZE = 1000;
 //number of entries to display
 const int ENTRIES = 100;
+//column widths
+const int W1 = 5, W2 = 12;
 
 int main() {
     //read the file
@@ -29,6 +34,7 @@ int main() {
         count++;
         total += sum_ascii(code);
         index += gen_hash_index(code);
+        //push codes into hash table
         hash_table[index].push_back(code);
     }
     
@@ -39,12 +45,12 @@ int main() {
     
     //display first 100 entries
     //access the map using iterators
-    cout << "Display first 100 entries:" << endl;
+    cout << "First 100 entries:" << endl;
     for (auto it = hash_table.begin(); it != hash_table.end() 
     && count < ENTRIES; it++) {
-    cout << it->first << ": ";
+    cout << setw(W1) << it->first << ": ";
         if (!it->second.empty()) {
-            cout << it->second.front() << endl;
+            cout << setw(W2) << it->second.front() << endl;
         }
     }
 
@@ -60,7 +66,7 @@ int gen_hash_index(string x) {
         //sum characters, int cast gets ASCII values
         sum += (int) c;
     }
-    return sum % 1000;
+    return sum % HASH_SIZE;
 };
 
 //function to get sum of ascii values
