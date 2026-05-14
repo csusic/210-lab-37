@@ -1,6 +1,11 @@
+// COMSC-210 | Lab 37 | Christine Susic
+
 #include <iostream>
+#include <string>
 using namespace std;
 
+//function prototype
+int sum_ascii(string);
 
 int main() {
     char a = 'A';
@@ -13,6 +18,18 @@ int main() {
 
     return 0;
 }
+
+//function
+int sum_ascii(string x) {
+    //initialize sum to zero
+    int sum = 0;
+    //loop to read each character
+    for (char c : x) {
+        //sum characters, int cast gets ASCII values
+        sum += (int) c;
+    }
+    return sum;
+};
 
 /* 
 These targets are present in the dataset and can be used for testing:
