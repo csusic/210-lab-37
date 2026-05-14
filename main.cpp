@@ -11,11 +11,14 @@ using namespace std;
 int gen_hash_index(string x);
 int sum_ascii(string);
 
+//number of entries to display
+const int ENTRIES = 100;
+
 int main() {
     //read the file
     ifstream fin("data.txt"); //open file
     //initialize count, total, and index to zero
-    int count = 0, int total = 0, int index = 0;
+    int count = 0, total = 0, index = 0;
     string code; //string to read from file
     
     //hash table map comprised of int (key) and list (values)
@@ -32,21 +35,18 @@ int main() {
     fin.close(); //close file
     
     //output total
-    cout << "Total: " << total << endl;
+    cout << "Total: " << total << endl << endl;
     
     //display first 100 entries
     //access the map using iterators
     cout << "Display first 100 entries:" << endl;
-    for (std::map<int, std::list<string>>::iterator it = hash_table.begin();
-    it != hash_table.end(); it++) {
-        cout << it->first << endl;
+    for (auto it = hash_table.begin(); it != hash_table.end() 
+    && count < ENTRIES; it++) {
+    cout << it->first << ": ";
+        if (!it->second.empty()) {
+            cout << it->second.front() << endl;
+        }
     }
-    
-    //testing function
-    string x = "ABC";
-    cout << "Sum x: " << sum_ascii(x) << endl;
-    string y = "abc";
-    cout << "Sum y: " << sum_ascii(y) << endl;
 
     return 0;
 }
