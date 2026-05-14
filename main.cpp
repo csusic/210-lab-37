@@ -8,22 +8,21 @@
 #include <list>
 using namespace std;
 
-//function prototypes
+//function prototype
 int gen_hash_index(string x);
-int sum_ascii(string);
 
 //hash table size
 const int HASH_SIZE = 1997;
 //number of entries to display
 const int ENTRIES = 100;
 //column widths
-const int W1 = 5, W2 = 12;
+const int W1 = 4, W2 = 12;
 
 int main() {
     //read the file
     ifstream fin("data.txt"); //open file
     //initialize count, total, index, and counter to zero
-    int count = 0, total = 0, index = 0, counter = 0;
+    int count = 0, index = 0, counter = 0;
     string code; //string to read from file
     
     //hash table map comprised of int (key) and list (values)
@@ -31,7 +30,6 @@ int main() {
     
     //read codes from file
     while (getline(fin, code)) {
-        total += sum_ascii(code);
         index = gen_hash_index(code);
         //push codes into hash table
         hash_table[index].push_back(code);
@@ -39,9 +37,6 @@ int main() {
     }
     
     fin.close(); //close file
-    
-    //output total
-    cout << "Total: " << total << endl << endl;
     
     //display first 100 entries
     //access the map using iterators
@@ -68,16 +63,4 @@ int gen_hash_index(string x) {
         sum += (int) c;
     }
     return sum % HASH_SIZE;
-};
-
-//function to get sum of ascii values
-int sum_ascii(string x) {
-    //initialize sum to zero
-    int sum = 0;
-    //loop to read each character
-    for (char c : x) {
-        //sum characters, int cast gets ASCII values
-        sum += (int) c;
-    }
-    return sum;
 };
