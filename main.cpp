@@ -18,6 +18,7 @@ int main() {
     //read codes from file
     while (getline(fin, line)) {
         count++;
+        total += sum_ascii(line);
     }
     
     fin.close(); //close file
