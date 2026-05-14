@@ -15,6 +15,11 @@ int main() {
     cout << b << endl;
     cout << (char) b << endl;
     
+    //testing function
+    string x = "ABC";
+    cout << "Sum x: " << sum_ascii(x) << endl;
+    string y = "abc";
+    cout << "Sum y: " << sum_ascii(y) << endl;
 
     return 0;
 }
