@@ -45,8 +45,8 @@ int main() {
     //choice for menu
     int choice;
     //input
-    int searchKey, newKey, removeKey;
-    string newValue;
+    int searchKey, newKey, removeKey, modifyKey;
+    string newValue, modifyValue;
     do {
         //menu
         cout << "\nHash Table Menu: " << endl;
@@ -77,6 +77,13 @@ int main() {
             case 2:
                 cout << "Enter key to search: ";
                 cin >> searchKey;
+                if (hash_table.count(searchKey)) {
+                    cout << "The key was found. Values: "<< endl;
+                    for (const auto& s : hash_table[searchKey]) cout << s << endl;
+                    cout << endl;
+                } else {
+                    cout << "Key not found." << endl;
+                }
                 break;
             //3. Add a key
             case 3:
@@ -84,20 +91,23 @@ int main() {
                 cin >> newKey;
                 cout << "Enter new value: ";
                 cin >> newValue;
-                //hash_table.insert();
                 break;
             //4. Remove a key
             case 4:
                 cout << "Enter key to remove: ";
                 cin >> removeKey;
-                //hash_table.remove();
+                if (hash_table.erase(removeKey)) {
+                    cout << "Key removed." << endl;
+                } else {
+                        cout << "Key not found." << endl;
+                }
                 break;
             //5. Modify a key
             case 5:
                 cout << "Enter key to modify: ";
                 cin >> modifyKey;
-                cout << "Enter key to remove: ";
-                cin >> removeKey;
+                cout << "Enter value to modify: ";
+                cin >> modifyValue;
                 //hash_table.update();
                 break;
             //0. Exit
