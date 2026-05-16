@@ -39,8 +39,6 @@ int main() {
     
     fin.close(); //close file
     
-    //display first 100 entries
-    
     //interactive menu
     //choice for menu
     int choice;
@@ -77,12 +75,11 @@ int main() {
             case 2:
                 cout << "Enter key to search: ";
                 cin >> searchKey;
-                if (hash_table.count(searchKey)) {
-                    cout << "The key was found. Values: "<< endl;
-                    for (const auto& s : hash_table[searchKey]) cout << s << endl;
-                    cout << endl;
-                } else {
-                    cout << "Key not found." << endl;
+                if (hash_table.find(searchKey) != hash_table.end()) {
+                    cout << "Key found.";
+                }
+                else {
+                    cout << "Key not found";
                 }
                 break;
             //3. Add a key
@@ -99,7 +96,7 @@ int main() {
                 if (hash_table.erase(removeKey)) {
                     cout << "Key removed." << endl;
                 } else {
-                        cout << "Key not found." << endl;
+                    cout << "Key not found." << endl;
                 }
                 break;
             //5. Modify a key
