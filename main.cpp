@@ -6,7 +6,7 @@
 #include <string>
 #include <map>
 #include <list>
-using namespace std;
+using namespace std
 
 //function prototype
 int gen_hash_index(string x);
