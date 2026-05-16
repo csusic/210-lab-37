@@ -88,6 +88,8 @@ int main() {
                 cin >> newKey;
                 cout << "Enter new value: ";
                 cin >> newValue;
+                hash_table.insert({newKey, {newValue}});
+                cout << "Key value inserted." << endl;
                 break;
             //4. Remove a key
             case 4:
@@ -105,6 +107,7 @@ int main() {
                 cin >> modifyKey;
                 cout << "Enter value to modify: ";
                 cin >> modifyValue;
+                
                 //hash_table.update();
                 break;
             //0. Exit
