@@ -3,7 +3,6 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include <algorithm>
 #include <string>
 #include <map>
 #include <list>
@@ -96,8 +95,11 @@ int main() {
             case 4:
                 cout << "Enter key to remove: ";
                 cin >> removeKey;
-                hash_table.erase(removeKey);
-                cout << "Key removed." << endl;
+                if (hash_table.erase(removeKey)) {
+                    cout << "Key " << removeKey << " removed." << endl;
+                } else {
+                    cout << "Key not found." << endl;
+                }
                 break;
             //5. Modify a key
             case 5:
@@ -106,6 +108,7 @@ int main() {
                 cout << "Enter value to modify: ";
                 cin >> modifyValue;
                 hash_table[modifyKey] = {modifyValue}; 
+                cout << "Key modified." << endl;
                 break;
             //0. Exit
             case 0:
@@ -114,6 +117,7 @@ int main() {
             default:
                 cout << "\nInvalid choice. Please try again." << endl;
         }
+        counter = 0; //reset counter
     } while (choice != 0);
 
     return 0;
