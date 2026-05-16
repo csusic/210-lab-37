@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+#include <algorithm>
 #include <string>
 #include <map>
 #include <list>
@@ -39,52 +40,65 @@ int main() {
     fin.close(); //close file
     
     //display first 100 entries
-    //access the map using iterators
-    cout << "First 100 entries:" << endl;
-    for (auto it = hash_table.begin(); it != hash_table.end() 
-    && counter < ENTRIES; it++) {
-        cout << setw(W1) << it->first << ": ";
-        if (!it->second.empty()) {
-            cout << setw(W2) << it->second.front() << endl;
-        }
-        counter++;
-    }
     
     //interactive menu
     //choice for menu
     int choice;
+    //input
+    int searchKey, newKey, removeKey;
+    string newValue;
     do {
         //menu
         cout << "\nHash Table Menu: " << endl;
-        cout << "[1] " << endl;
-        cout << "[2]  " << endl;
-        cout << "[3]  " << endl;
-        cout << "[4]  " << endl;
-        cout << "[5]  " << endl;
-        cout << "[0] " << endl;
+        cout << "[1] Print the first 100 entries" << endl;
+        cout << "[2] Search for a key" << endl;
+        cout << "[3] Add a key" << endl;
+        cout << "[4] Remove a key" << endl;
+        cout << "[5] Modify a key" << endl;
+        cout << "[0] Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
     
     switch (choice) {
             //1. Print the first 100 entries
             case 1:
-                
+                //access the map using iterators
+                cout << "\nFirst 100 entries:" << endl;
+                for (auto it = hash_table.begin(); it != hash_table.end() 
+                && counter < ENTRIES; it++) {
+                    cout << setw(W1) << it->first << ": ";
+                    if (!it->second.empty()) {
+                        cout << setw(W2) << it->second.front() << endl;
+                    }
+                    counter++;
+                }
                 break;
             //2. Search for a key
             case 2:
-                
+                cout << "Enter key to search: ";
+                cin >> searchKey;
                 break;
             //3. Add a key
             case 3:
-                
+                cout << "Enter new key: ";
+                cin >> newKey;
+                cout << "Enter new value: ";
+                cin >> newValue;
+                //hash_table.insert();
                 break;
             //4. Remove a key
             case 4:
-                
+                cout << "Enter key to remove: ";
+                cin >> removeKey;
+                //hash_table.remove();
                 break;
             //5. Modify a key
             case 5:
-               
+                cout << "Enter key to modify: ";
+                cin >> modifyKey;
+                cout << "Enter key to remove: ";
+                cin >> removeKey;
+                //hash_table.update();
                 break;
             //0. Exit
             case 0:
