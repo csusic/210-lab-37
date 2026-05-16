@@ -105,8 +105,7 @@ int main() {
                 cin >> modifyKey;
                 cout << "Enter value to modify: ";
                 cin >> modifyValue;
-                
-                //hash_table.update();
+                hash_table[modifyKey] = {modifyValue}; 
                 break;
             //0. Exit
             case 0:
