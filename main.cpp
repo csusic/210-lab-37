@@ -76,10 +76,10 @@ int main() {
                 cout << "Enter key to search: ";
                 cin >> searchKey;
                 if (hash_table.find(searchKey) != hash_table.end()) {
-                    cout << "Key found.";
+                    cout << "Key found." << endl;
                 }
                 else {
-                    cout << "Key not found";
+                    cout << "Key not found." << endl;
                 }
                 break;
             //3. Add a key
