@@ -22,8 +22,8 @@ const int W1 = 4, W2 = 12;
 int main() {
     //read the file
     ifstream fin("data.txt"); //open file
-    //initialize count, total, index, and counter to zero
-    int count = 0, index = 0, counter = 0;
+    //initialize count and index to zero
+    int count = 0, index = 0;
     string code; //string to read from file
     
     //hash table map comprised of int (key) and list (values)
@@ -40,6 +40,7 @@ int main() {
     fin.close(); //close file
     
     //interactive menu
+    int counter = 0;
     //choice for menu
     int choice;
     //input
@@ -95,11 +96,8 @@ int main() {
             case 4:
                 cout << "Enter key to remove: ";
                 cin >> removeKey;
-                if (hash_table.erase(removeKey)) {
-                    cout << "Key removed." << endl;
-                } else {
-                    cout << "Key not found." << endl;
-                }
+                hash_table.erase(removeKey);
+                cout << "Key removed." << endl;
                 break;
             //5. Modify a key
             case 5:
